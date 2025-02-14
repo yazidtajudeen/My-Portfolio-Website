@@ -1,5 +1,4 @@
 import './index.css'
-import './components/Navbar/Header'
 import Header from './components/Navbar/Header'
 import { ThemeProvider, useTheme } from "./theme/ThemeContext"; 
 

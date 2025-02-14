@@ -13,7 +13,7 @@ const links: { name: string; href: string; icon: JSX.Element }[] = [
   { name: "About", href: "/about", icon: <BsInfoCircleFill /> },
   { name: "Services", href: "/services", icon: <FaServicestack /> },
   { name: "Skills", href: "/skills", icon: <FaTools/> }, 
-  { name: "Projects", href: "/projects", icon: <FaProjectDiagram /> },
+  { name: "Projects", href: "/projects", icon: <FaProjectDiagram /> },  
   { name: "Contact", href: "/contact", icon: <MdConnectWithoutContact/> }, 
 ];
 
