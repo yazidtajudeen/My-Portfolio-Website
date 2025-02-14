@@ -12,4 +12,5 @@
 body{
     background-color: var(--darkBg-);
     font-family:"Inter", serif;
+    color: #fff;
 }
