@@ -4,8 +4,10 @@ import { BsInfoCircleFill } from "react-icons/bs";
 import { FaServicestack, FaProjectDiagram, FaTools } from "react-icons/fa";
 import { MdConnectWithoutContact } from "react-icons/md";
 import Mode from './Mode';
-import HireButton from './button';
+import OneButton from './Hire';
+
 import { useTheme } from '../../theme/ThemeContext';
+import { useLocation } from 'react-router-dom';
 
 const links: { name: string; href: string; icon: JSX.Element }[] = [
   { name: "Home", href: "/", icon: <AiFillHome /> },
@@ -18,6 +20,7 @@ const links: { name: string; href: string; icon: JSX.Element }[] = [
 
 const Header = () => {
   const { isDarkMode } = useTheme();
+  const location = useLocation(); 
 
   return (
     <div>
@@ -33,7 +36,15 @@ const Header = () => {
           <ul style={{ display: "inline-flex", listStyle: "none", gap: "2.8rem", color: isDarkMode ? '#fff' : '#000' }}>
             {links.map((link) => (
               <li key={link.href} style={{ fontSize: "18px" }}>
-                <a href={link.href} style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}>
+                <a 
+                  href={link.href} 
+                  style={{ 
+                    display: "flex", 
+                    alignItems: "center", 
+                    gap: "0.8rem", 
+                    color: location.pathname === link.href ? '#5967D8' : isDarkMode ? '#fff' : '#000' 
+                  }}
+                >
                   {link.icon} {link.name}
                 </a>
               </li>
@@ -42,7 +53,7 @@ const Header = () => {
         </div>
         <div className="hire-button" style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
           <Mode/>
-          <HireButton/>
+          <OneButton/>
         </div>
       </nav>
     </div>
