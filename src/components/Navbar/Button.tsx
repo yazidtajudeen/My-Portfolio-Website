@@ -5,7 +5,7 @@ interface ButtonProps {
   label?: string;
 }
 
-export default function Button({ onClick, label = "Hire Me" }: ButtonProps) {
+export default function hireButton({ onClick, label = "Hire Me" }: ButtonProps) {
   const buttonStyle = {
     backgroundColor: "#5967D8",
     border: "none",

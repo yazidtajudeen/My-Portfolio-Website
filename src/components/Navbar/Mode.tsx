@@ -1,7 +1,7 @@
 import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "../../theme/ThemeContext"; 
 
-export default function ModeButton() {
+export default function Mode() {
     const { isDarkMode, toggleTheme } = useTheme();
 
     const buttonStyle = {
