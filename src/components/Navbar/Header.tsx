@@ -4,7 +4,7 @@ import { BsInfoCircleFill } from "react-icons/bs";
 import { FaServicestack, FaProjectDiagram, FaTools } from "react-icons/fa";
 import { MdConnectWithoutContact } from "react-icons/md";
 import Mode from './Mode';
-import OneButton from './Hire';
+import RageButton from './RageButton';
 
 import { useTheme } from '../../theme/ThemeContext';
 import { useLocation } from 'react-router-dom';
@@ -53,7 +53,7 @@ const Header = () => {
         </div>
         <div className="hire-button" style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
           <Mode/>
-          <OneButton/>
+          <RageButton/>
         </div>
       </nav>
     </div>
