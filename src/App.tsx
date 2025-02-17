@@ -1,6 +1,8 @@
 import './index.css'
 import Header from './components/Navbar/Header';
 import { ThemeProvider, useTheme } from "./theme/ThemeContext"; 
+import About from './components/content/About/About';
+
 
 
 function App() {
@@ -17,6 +19,7 @@ function ThemedApp() {
   return (
     <div style={{ backgroundColor: isDarkMode ? '#090A15' : '#ffff', minHeight: '100vh' }}>
       <Header />
+      <About/>
     </div>
   )
 }
