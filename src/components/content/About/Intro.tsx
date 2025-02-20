@@ -52,30 +52,70 @@ export default function Intro() {
                 duration: 2,
                 ease: 'power2.inOut',
             });
+        } else {
+            console.warn('GSAP target sectionRef not found.');
         }
 
-        gsap.fromTo(textRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 0.5, ease: 'power2.out' });
-        gsap.fromTo(buttonRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 1, ease: 'power2.out' });
-        gsap.fromTo(imageRef.current, { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 1, delay: 1.5, ease: 'power2.out' });
+        if (textRef.current) {
+            gsap.fromTo(textRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 0.5, ease: 'power2.out' });
+        } else {
+            console.warn('GSAP target textRef not found.');
+        }
 
-        gsap.fromTo('.user-image', { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.5, delay: 2, ease: 'power2.out' });
+        if (buttonRef.current) {
+            gsap.fromTo(buttonRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 1, ease: 'power2.out' });
+        } else {
+            console.warn('GSAP target buttonRef not found.');
+        }
 
-        gsap.fromTo('.background-object', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 0.5, duration: 2, delay: 1, ease: 'power2.out' });
+        if (imageRef.current) {
+            gsap.fromTo(imageRef.current, { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 1, delay: 1.5, ease: 'power2.out' });
+        } else {
+            console.warn('GSAP target imageRef not found.');
+        }
 
-        gsap.to('.background-object-small', {
-            scale: 1.2, 
-            boxShadow: '0 0 30px 15px rgba(54, 144, 204, 0.9)', 
-            duration: 1.5,
-            repeat: -1,
-            yoyo: true,
-            ease: 'power1.inOut',
-        });
+        const userImage = document.querySelector('.user-image');
+        if (userImage) {
+            gsap.fromTo(userImage, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.5, delay: 2, ease: 'power2.out' });
+            gsap.to(userImage, {
+                y: -20,
+                repeat: -1,
+                yoyo: true,
+                duration: 1.5,
+                ease: 'power1.inOut',
+            });
+        } else {
+            console.warn('GSAP target .user-image not found.');
+        }
+
+        const backgroundObject = document.querySelector('.background-object');
+        if (backgroundObject) {
+            gsap.fromTo(backgroundObject, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 0.5, duration: 2, delay: 1, ease: 'power2.out' });
+        } else {
+            console.warn('GSAP target .background-object not found.');
+        }
+
+        const backgroundObjectSmall = document.querySelector('.background-object-small');
+        if (backgroundObjectSmall) {
+            gsap.to(backgroundObjectSmall, {
+                scale: 1.2, 
+                boxShadow: '0 0 30px 15px rgba(54, 144, 204, 0.9)', 
+                duration: 1.5,
+                repeat: -1,
+                yoyo: true,
+                ease: 'power1.inOut',
+            });
+        } else {
+            console.warn('GSAP target .background-object-small not found.');
+        }
 
         if (socialButtonsRef.current) {
             gsap.fromTo(socialButtonsRef.current.children, 
                 { y: 20, opacity: 0 }, 
                 { y: 0, opacity: 1, duration: 1, delay: 2.5, stagger: 0.2, ease: 'power2.out' }
             );
+        } else {
+            console.warn('GSAP target socialButtonsRef not found.');
         }
 
         const handleMouseMove = (event: MouseEvent) => {
@@ -104,7 +144,7 @@ export default function Intro() {
         <div>
             <section ref={sectionRef} className='main' style={{
                 display: 'flex', 
-                height: '90vh', 
+                height: '65vh', 
                 position: 'relative',
                 width: 'auto',
             }}>
@@ -118,17 +158,6 @@ export default function Intro() {
                     left: '10px',
                     zIndex: 0,
                     boxShadow: '0 0 15px 5px #3690CC',
-                }}></div>
-                <div className='background-object-small' style={{
-                    position: 'fixed',
-                    width: '60px',
-                    height: '60px',
-                    backgroundColor: '#5967D8',
-                    borderRadius: '50%',
-                    bottom: '10px',
-                    right: '10px',
-                    zIndex: 0,
-                    boxShadow: '0 0 15px 5px #5967D8',
                 }}></div>
                 <div ref={imageRef} style={{marginTop:'8em',marginLeft:'5em', zIndex: 1}}>
                     <img src={sider} alt="sider icon" style={siderStyle} />
@@ -145,26 +174,32 @@ export default function Intro() {
                         Hi, I'm a software engineer specializing in mobile app development and UI/UX design. I create intuitive, user-friendly applications <br />
                         with a strong focus on seamless experiences. Explore my work and let's build something great together
                     </p> <br />
-                    <div style={{display:'flex',marginTop:'2em'}}>
-                        <button ref={buttonRef} style={{
-                            display: 'flex',
-                            backgroundColor: "#5967D8",
-                            width: "266px",
-                            height: "53px",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            borderRadius: "12px",
-                            fontWeight: "400",
-                            fontSize: "16px",
-                            cursor: "pointer",
-                            position: 'relative',
-                        }}>
+                    <div style={{ display: 'flex', marginTop: '2em' }}>
+                        <a 
+                            href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID"
+                            style={{
+                                display: 'flex',
+                                backgroundColor: "#5967D8",
+                                width: "266px",
+                                height: "53px",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                borderRadius: "12px",
+                                fontWeight: "400",
+                                fontSize: "16px",
+                                cursor: "pointer",
+                                position: 'relative',
+                                textDecoration: 'none',
+                                color: 'white',
+                            }}
+                            download
+                        >
                             <span style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
                                 Download CV
                             </span>
                             <FaDownload style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)' }}/>
-                        </button>
-                        <div ref={socialButtonsRef} style={{display: 'flex', marginLeft: '1em', marginTop: '0.5em'}}>
+                        </a>
+                        <div ref={socialButtonsRef} style={{ display: 'flex', marginLeft: '1em', marginTop: '0.5em' }}>
                             <button 
                                 className='social' 
                                 style={{
@@ -181,7 +216,7 @@ export default function Intro() {
                                     transition: 'transform 0.3s ease',
                                 }}
                                 onClick={() => window.open('https://www.linkedin.com/in/yazid-tajudeen-b803b326b/', '_blank')}
-                                onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1 })}
+                                onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.3 })}
                                 onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1 })}
                             >
                                 <FaLinkedin color="#16A394"/>
@@ -230,22 +265,26 @@ export default function Intro() {
                         </div>
                    </div>
                 </div>
-                <div className='user-image hover-effect' style={{
-                    borderRadius: '0 60px 0 60px',
-                    overflow: 'hidden',
-                    width: '580px', 
-                    height: '550px',
-                    backgroundColor: isDarkMode ? '#161B27' : '#16A394',
-                    marginLeft: '50em',
+                <div className='user-image-container' style={{
+                    position: 'relative',
+                    marginLeft: '45em',
                     marginTop: '3em',
-                    filter: isDarkMode ? 'grayscale(32%)' : 'none',
-                    transition: 'background-color 0.5s ease, filter 0.5s ease',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
                     zIndex: 1,
                 }}>
-                  <img src={userImage} alt="user-image" style={{ width: '120%', height: '120%', objectFit: 'cover' }} />
+                    <div className='user-image hover-effect' style={{
+                        borderRadius: '0 60px 0 60px',
+                        overflow: 'hidden',
+                        width: '580px', 
+                        height: '550px',
+                        backgroundColor: isDarkMode ? '#161B27' : '#161B27',
+                        filter: isDarkMode ? 'grayscale(3%)' : 'none',  
+                        transition: 'background-color 0.5s ease, filter 0.6s ease',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                        <img src={userImage} alt="user-image" style={{ width: '130%', height: '140%', objectFit: 'cover' }} />
+                    </div>
                 </div>
             </section>
         </div>

@@ -1,10 +1,11 @@
 import Intro from "./Intro";
 
-export default function About() {
+const About = () => {
     return (
         <div>
-                 <Intro />
-         </div>
-            
+            <Intro />
+        </div>
     );
-}
+};
+
+export default About;
