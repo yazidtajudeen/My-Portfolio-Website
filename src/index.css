@@ -9,12 +9,13 @@
     --skyBlue-:#4381D1;
     --navyBlue-:#2B2E7B;
 }
-body{
-    background-color: var(--darkBg-);
-    font-family:"Inter", serif;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  overflow-y: auto; /* Ensure vertical scrolling is enabled */
 }
 
 .hover-effect {

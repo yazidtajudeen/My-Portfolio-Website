@@ -128,7 +128,8 @@ export default function Intro() {
                     rotationX: xRotation,
                     rotationY: yRotation,
                     transformPerspective: 500,
-                    ease: 'power2.out',
+                    ease: 'power3.out',
+                    duration: 0.5,
                 });
             }
         };
@@ -274,10 +275,10 @@ export default function Intro() {
                     <div className='user-image hover-effect' style={{
                         borderRadius: '0 60px 0 60px',
                         overflow: 'hidden',
-                        width: '580px', 
-                        height: '550px',
+                        width: '590px', 
+                        height: '570px',
                         backgroundColor: isDarkMode ? '#161B27' : '#161B27',
-                        filter: isDarkMode ? 'grayscale(3%)' : 'none',  
+                        filter: isDarkMode ? 'grayscale(1%)' : 'none',  
                         transition: 'background-color 0.5s ease, filter 0.6s ease',
                         display: 'flex',
                         alignItems: 'center',
