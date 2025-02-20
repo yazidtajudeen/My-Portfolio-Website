@@ -2,6 +2,9 @@ import { useContext, useEffect, useRef } from 'react';
 import sider from '../../../assets/sider.png';
 import forImage from '../../../assets/for.png';
 import { FaDownload } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
 import { ThemeContext } from '../../../theme/ThemeContext';
 import userImage from '../../../assets/user-image.png';
 import { gsap } from 'gsap';
@@ -12,6 +15,7 @@ export default function Intro() {
     const textRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const imageRef = useRef<HTMLDivElement>(null);
+    const socialButtonsRef = useRef<HTMLDivElement>(null);
 
     if (!themeContext) {
         throw new Error("Intro must be used within a ThemeProvider");
@@ -67,6 +71,13 @@ export default function Intro() {
             ease: 'power1.inOut',
         });
 
+        if (socialButtonsRef.current) {
+            gsap.fromTo(socialButtonsRef.current.children, 
+                { y: 20, opacity: 0 }, 
+                { y: 0, opacity: 1, duration: 1, delay: 2.5, stagger: 0.2, ease: 'power2.out' }
+            );
+        }
+
         const handleMouseMove = (event: MouseEvent) => {
             const { clientX, clientY } = event;
             if (imageRef.current) {
@@ -91,7 +102,12 @@ export default function Intro() {
 
     return (
         <div>
-            <section ref={sectionRef} className='main' style={{display:'flex', height: '90vh', position: 'relative'}}>
+            <section ref={sectionRef} className='main' style={{
+                display: 'flex', 
+                height: '90vh', 
+                position: 'relative',
+                width: 'auto',
+            }}>
                 <div className='background-object-small' style={{
                     position: 'fixed',
                     width: '60px',
@@ -148,10 +164,69 @@ export default function Intro() {
                             </span>
                             <FaDownload style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)' }}/>
                         </button>
-                        <div style={{display :'flex'}}>
-                            <button className='social'>
-                                
-                         </button>
+                        <div ref={socialButtonsRef} style={{display: 'flex', marginLeft: '1em', marginTop: '0.5em'}}>
+                            <button 
+                                className='social' 
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    border: '1px solid #16A394',
+                                    width: '35px',
+                                    height: '35px',
+                                    borderRadius: '50%',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer',
+                                    marginRight: '10px',
+                                    transition: 'transform 0.3s ease',
+                                }}
+                                onClick={() => window.open('https://www.linkedin.com/in/yazid-tajudeen-b803b326b/', '_blank')}
+                                onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1 })}
+                                onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1 })}
+                            >
+                                <FaLinkedin color="#16A394"/>
+                            </button>
+                            <button 
+                                className='social' 
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    border: '1px solid #16A394',
+                                    width: '35px',
+                                    height: '35px',
+                                    borderRadius: '50%',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer',
+                                    marginRight: '10px',
+                                    transition: 'transform 0.3s ease',
+                                }}
+                                onClick={() => window.open('https://x.com/NoimonX', '_blank')}
+                                onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1 })}
+                                onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1 })}
+                            >
+                                <FaXTwitter color="#16A394"/>
+                            </button>
+                            <button 
+                                className='social' 
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    border: '1px solid #16A394',
+                                    width: '35px',
+                                    height: '35px',
+                                    borderRadius: '50%',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer',
+                                    transition: 'transform 0.3s ease',
+                                }}
+                                onClick={() => window.open('https://github.com/yazidtajudeen', '_blank')}
+                                onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1 })}
+                                onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1 })}
+                            >
+                                <FaGithub color="#16A394"/>
+                            </button>
                         </div>
                    </div>
                 </div>

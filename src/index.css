@@ -21,21 +21,6 @@ body{
     position: relative;
     z-index: 1;
 }
-
-/* .hover-effect::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border: 2px solid rgba(54, 144, 204, 0.5);
-    border-radius: 0 60px 0 60px;
-    pointer-events: none;
-    animation: rotateStroke 3s linear infinite;
-    z-index: -1;
-} */
-
 @keyframes rotateStroke {
     from {
         transform: rotate(0deg);
